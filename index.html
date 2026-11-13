@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 5 - Custom Element</title>
+    <style>
+        x-center {
+            visibility: hidden;
+        }
+        x-center:defined {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <x-center>
+        <h1>Hello from x-center</h1>
+        <p>This text is centered by a custom element.</p>
+    </x-center>
+
+    <script>
+        class XCenter extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML = `<div style="text-align: center;">${this.innerHTML}</div>`;
+            }
+        }
+        customElements.define("x-center", XCenter);
+    </script>
+</body>
+</html>
